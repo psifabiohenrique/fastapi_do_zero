@@ -1,0 +1,10 @@
+.pytest_cache/
+__pycache__/
+*.pyc
+.ruff_cache/
+htmlcov/
+.coverage
+.python-version
+poetry.lock
+.venv/
+venv/
