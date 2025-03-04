@@ -65,7 +65,9 @@ def test_read_user(client):
 
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {
-        'id': 1, 'username': 'user', 'email': 'email@email.com'
+        'id': 1,
+        'username': 'user',
+        'email': 'email@email.com',
     }
 
 

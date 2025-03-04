@@ -8,3 +8,5 @@ htmlcov/
 poetry.lock
 .venv/
 venv/
+.env
+database.db
