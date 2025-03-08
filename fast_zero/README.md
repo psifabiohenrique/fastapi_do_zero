@@ -73,3 +73,7 @@ Levantando o servidor: ```task run```
 Executando os testes: ```task test```
 
 Executando o formatador: ```task format```
+
+Criando migrações no alembic: ```alembic revision --autogenerate -m "migration title"```
+
+Aplicando as migrações do alembic: ```alembic upgrade head```
