@@ -63,7 +63,10 @@ No diretório do projeto:
 ## Utilização
 
 ### Configurando o projeto
-Crie um arquivo .env na raiz do projeto, e insira a url da base de dados na variável ```DATABASE_URL```
+Crie um arquivo .env na raiz do projeto, e insira a url da base de dados na variável
+```DATABASE_URL```.
+Bem como configure as variáveis
+```SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES```
 
 Ex: ```DATABASE_URL="sqlite:///database.db"```
 
