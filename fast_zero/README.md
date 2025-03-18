@@ -68,7 +68,7 @@ Crie um arquivo .env na raiz do projeto, e insira a url da base de dados na vari
 Bem como configure as variáveis
 ```SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES```
 
-Ex: ```DATABASE_URL="sqlite:///database.db"```
+Ex: ```DATABASE_URL="sqlite+aiosqlite:///database.db"```
 
 ### Executando o projeto
 Levantando o servidor: ```task run```
