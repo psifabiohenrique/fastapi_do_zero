@@ -99,22 +99,14 @@ def test_update_user(client, user, token):
     }
 
 
-def test_update_integrity_error(client, user, token):
-    client.post(
-        '/users/',
-        json={
-            'username': 'fausto',
-            'email': 'fausto@example.com',
-            'password': 'secret',
-        },
-    )
+def test_update_integrity_error(client, other_user, user, token):
 
     response_update = client.put(
         f'/users/{user.id}',
         headers={'Authorization': f'Bearer {token}'},
         json={
             'username': 'bob',
-            'email': 'fausto@example.com',
+            'email': other_user.email,
             'password': 'newpassword',
         },
     )
@@ -123,9 +115,9 @@ def test_update_integrity_error(client, user, token):
     assert response_update.json() == {'detail': 'Email already exists'}
 
 
-def test_update_user_with_error_404(client, user, token):
+def test_update_user_with_error_404(client, other_user, token):
     response = client.put(
-        '/users/2',
+        f'/users/{other_user.id}',
         headers={'Authorization': f'Bearer {token}'},
         json={
             'username': 'bob',
