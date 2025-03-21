@@ -48,6 +48,8 @@ async def test_create_todo(session, user):
         'state': 'draft',
         'title': 'Test Todo',
         'user_id': 1,
+        'created_at': todo.created_at,
+        'updated_at': todo.updated_at,
     }
 
 
@@ -67,3 +69,19 @@ async def test_user_todo_relationship(session, user: User):
     user = await session.scalar(select(User).where(User.id == user.id))
 
     assert user.todos == [todo]
+
+
+@pytest.mark.asyncio
+async def test_create_todo_error(session, user: User):
+    todo = Todo(
+        title='Test Todo',
+        description='Test Desc',
+        state='test',
+        user_id=user.id,
+    )
+
+    session.add(todo)
+    await session.commit()
+
+    with pytest.raises(LookupError):
+        await session.scalar(select(Todo))
