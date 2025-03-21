@@ -100,7 +100,6 @@ def test_update_user(client, user, token):
 
 
 def test_update_integrity_error(client, other_user, user, token):
-
     response_update = client.put(
         f'/users/{user.id}',
         headers={'Authorization': f'Bearer {token}'},
