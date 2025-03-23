@@ -18,6 +18,7 @@ class TodoFactory(factory.Factory):
 
 # POST /todos/
 
+
 def test_create_todo(client, token):
     response = client.post(
         '/todos/',
@@ -41,8 +42,7 @@ def test_create_todo(client, token):
 def test_create_todo_state_error(client, token):
     response = client.post(
         '/todos/',
-        headers={
-            'Authorization': f'Bearer {token}'},
+        headers={'Authorization': f'Bearer {token}'},
         json={
             'title': 'Test todo',
             'description': 'Test todo description',
@@ -53,6 +53,7 @@ def test_create_todo_state_error(client, token):
 
 
 # GET /todos/
+
 
 @pytest.mark.asyncio
 async def test_list_todos_should_return_5_todos(session, client, user, token):
@@ -187,12 +188,12 @@ async def test_list_todos_filter_combined_should_return_5_todos(
 ):
     expected_todos = 5
     todos = TodoFactory.create_batch(
-            5,
-            user_id=user.id,
-            title='Test todo combined',
-            description='combined description',
-            state=TodoState.done,
-        )
+        5,
+        user_id=user.id,
+        title='Test todo combined',
+        description='combined description',
+        state=TodoState.done,
+    )
     session.add_all(todos)
 
     session.add_all(
@@ -223,6 +224,7 @@ async def test_list_todos_filter_combined_should_return_5_todos(
 
 # PATCH /todos/{id}
 
+
 def test_patch_todo_error(client, token):
     response = client.patch(
         '/todos/10',
@@ -250,6 +252,7 @@ async def test_patch_todo(session, client, user, token):
 
 
 # DELETE /todos/{id}
+
 
 @pytest.mark.asyncio
 async def test_delete_todo(session, client, user, token):
